@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="com_google_android_gms_fonts_certs">
+        <item>
+            MIIEQDCCAiigAwIBAgIDOkBEANMA0GCSqGSIb3DQEBCwUAMHQxCzAJBgNVBAYTAlVT
+            MRMwEQYDVQQIEwp3YXNoaW5ndG9uMRRADgYDVQQHEwdSZWRtb25kMRMwEQYDVQQKEwpr
+            ZXJzdGVuaS5jb20xEDAOBgNVBAsTB1Byb2R1Y3QxEDAOBgNVBAMTB1Byb2R1Y3QwHhcN
+            MjEwMjA1MDAwMDAwWhcNMzEwMjA1MDAwMDAwWjB0MQswCQYDVQQGEwJVUzETMBEGA1UE
+            CBMKd2FzaGluZ3RvbjERMA8GA1UEBxMIUmVkbW9uZDETMBEGA1UEChMKa2Vyc3Rlbmku
+            Y29tMRAwDgYDVQQLEwdQcm9kdWN0MRAwDgYDVQQDEwdQcm9kdWN0MIIBIjANBgkqhkiG
+            9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0r1... (abaikan atau gunakan string standar dari Google)
+        </item>
+    </string-array>
+</resources>
