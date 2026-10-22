@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.umn.servisin.datas.ServisDataSource
+import org.umn.servisin.ui.screens.BookingConfirmation
 // import org.umn.servisin.model.Worker
 import org.umn.servisin.ui.screens.CategoryScreen
 import org.umn.servisin.ui.screens.HomeScreen
@@ -78,6 +79,10 @@ fun SetupNavGraph() {
 
         composable( route = Screen.BookingPlan.route ) {
             BookingPlan(navController = navController)
+        }
+
+        composable( route = Screen.BookingConfirmation.route ) {
+            BookingConfirmation(navController = navController)
         }
     }
 }

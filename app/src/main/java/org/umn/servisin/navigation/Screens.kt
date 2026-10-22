@@ -19,4 +19,6 @@ sealed class Screen(val route: String) {
     object WorkerProfile: Screen("workerProfile/{workerName}")
 
     object BookingPlan: Screen("bookingPlan")
+
+    object BookingConfirmation : Screen("bookingConfirmation")
 }

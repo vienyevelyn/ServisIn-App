@@ -475,7 +475,7 @@ fun BookingPlan(navController: NavController) {
                         if (notes.isBlank()) {
                             notes = "Nothing"
                         }
-                        navController.navigate(Screen.Home.route)
+                        navController.navigate(Screen.BookingConfirmation.route)
                     }
                 },
                 colors = ButtonDefaults.buttonColors(
