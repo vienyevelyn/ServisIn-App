@@ -4,6 +4,7 @@ package org.umn.servisin.ui.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -232,30 +233,6 @@ fun WorkerCard(
                         maxLines = 1,
                         modifier = Modifier.weight(1f)
                     )
-
-                    Spacer(modifier = Modifier.width(6.dp))
-
-                    Button(
-                        onClick = onBookNowClick,
-                        shape = RoundedCornerShape(50.dp),
-                        contentPadding = PaddingValues(
-                            horizontal = 10.dp
-                        ),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor =
-                                MaterialTheme.colorScheme.primary
-                        ),
-                        modifier = Modifier.height(30.dp)
-                    ) {
-                        Text(
-                            text = "Book Now",
-                            style = MaterialTheme.typography.labelMedium.copy(
-                                color = Color.White,
-                                fontWeight = FontWeight.SemiBold,
-                                fontSize = 11.sp
-                            )
-                        )
-                    }
                 }
 
                 // Worker rating and review count
@@ -320,19 +297,49 @@ fun WorkerCard(
                     )
                 }
 
-                // Hourly rate
-                Text(
-                    text = "Rp. ${
-                        java.text.NumberFormat
-                            .getNumberInstance(java.util.Locale("id", "ID"))
-                            .format(worker.payPerHour)
-                    } / Jam",
-                    style = MaterialTheme.typography.bodySmall.copy(
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 12.sp
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth()
+                ){
+                    // Hourly rate
+                    Text(
+                        text = "Rp. ${
+                            java.text.NumberFormat
+                                .getNumberInstance(java.util.Locale("id", "ID"))
+                                .format(worker.payPerHour)
+                        } / Jam",
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 12.sp
+                        )
                     )
-                )
+
+                    Spacer(modifier = Modifier.width(6.dp))
+
+                    Button(
+                        onClick = onBookNowClick,
+                        shape = RoundedCornerShape(50.dp),
+                        contentPadding = PaddingValues(
+                            horizontal = 10.dp
+                        ),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor =
+                                MaterialTheme.colorScheme.primary
+                        ),
+                        modifier = Modifier.height(30.dp)
+                    ) {
+                        Text(
+                            text = "Book Now",
+                            style = MaterialTheme.typography.labelMedium.copy(
+                                color = Color.White,
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 11.sp
+                            )
+                        )
+                    }
+                }
             }
         }
     }
