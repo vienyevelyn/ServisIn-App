@@ -2,8 +2,9 @@ package org.umn.servisin.datas
 
 import org.umn.servisin.R
 import org.umn.servisin.model.CategoryItem
-import org.umn.servisin.model.Person
+import org.umn.servisin.model.Review
 import org.umn.servisin.model.ServisCategory
+import org.umn.servisin.model.Worker
 
 object ServisDataSource {
     val categoryList = listOf(
@@ -59,30 +60,57 @@ object ServisDataSource {
         )
     )
 
-    val peopleList = listOf(
-        Person(
-            imageRes = null,
-            name = "Siti Rohani",
-            rating = 4.9,
-            reviewCount = 120,
-            services = listOf("Membersihkan karat", "Kaca", "Lantai", "Area toilet", "Disinfeksi", "Detailing dapur"),
-            distance = "1.2 km away"
+    val workers = listOf(
+        Worker(
+            name = "Andi Pratama",
+            payPerHour = 50000,
+            description = "Experienced plumber specializing in pipe repairs and water installations.",
+            rating = 4.8,
+            reviews = listOf(
+                Review("Sarah", "Fixed my leaking pipe quickly!", 5),
+                Review("Budi", "Friendly and professional service.", 5)
+            ),
+            keahlian = listOf(
+                "Plumbing",
+                "Pipe Repair",
+                "Water Installation"
+            ),
+            picture = R.drawable.cleaner1,
+            experience = 5
         ),
-        Person(
-            imageRes = null,
+        Worker(
+            name = "Siti Rahma",
+            payPerHour = 45000,
+            description = "Professional house cleaner who specializes in deep cleaning and organizing.",
+            rating = 4.7,
+            reviews = listOf(
+                Review("Diana", "My house looks spotless!", 5),
+                Review("Rina", "Very thorough and punctual.", 3)
+            ),
+            keahlian = listOf(
+                "House Cleaning",
+                "Deep Cleaning",
+                "Home Organization"
+            ),
+            picture = R.drawable.cleaner1,
+            experience = 3
+        ),
+        Worker(
             name = "Budi Santoso",
-            rating = 4.5,
-            reviewCount = 120,
-            services = listOf("Membersihkan karat", "Kaca", "Lantai", "Area toilet", "Disinfeksi", "Detailing dapur"),
-            distance = "1.2 km away"
-        ),
-        Person(
-            imageRes = null,
-            name = "Dewi Lestari",
-            rating = 4.5,
-            reviewCount = 120,
-            services = listOf("Membersihkan karat", "Kaca", "Lantai", "Area toilet", "Disinfeksi", "Detailing dapur"),
-            distance = "1.2 km away"
+            payPerHour = 60000,
+            description = "Skilled electrician experienced in home wiring and electrical repairs.",
+            rating = 4.9,
+            reviews = listOf(
+                Review("Andi", "Solved my electrical problem perfectly.", 5),
+                Review("Maya", "Quick, safe, and reliable.", 4)
+            ),
+            keahlian = listOf(
+                "Electrical Repair",
+                "Home Wiring",
+                "Lighting Installation"
+            ),
+            picture = R.drawable.cleaner1,
+            experience = 8
         )
     )
 }
