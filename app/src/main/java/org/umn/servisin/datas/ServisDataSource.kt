@@ -2,7 +2,9 @@ package org.umn.servisin.datas
 
 import org.umn.servisin.R
 import org.umn.servisin.model.CategoryItem
+import org.umn.servisin.model.Review
 import org.umn.servisin.model.ServisCategory
+import org.umn.servisin.model.Worker
 
 object ServisDataSource {
     val categoryList = listOf(
@@ -55,6 +57,60 @@ object ServisDataSource {
             title = "Cleaning & Pest Control",
             description = "Deep Cleaning Rumah, Cuci Kasur/Sofa/Karpet, Pembasmi Rayap/Serangga, dan Disinfeksi.",
             categoryRoute = "cleaning_route"
+        )
+    )
+
+    val workers = listOf(
+        Worker(
+            name = "Andi Pratama",
+            payPerHour = 50000,
+            description = "Experienced plumber specializing in pipe repairs and water installations.",
+            rating = 4.8,
+            reviews = listOf(
+                Review("Sarah", "Fixed my leaking pipe quickly!", 5),
+                Review("Budi", "Friendly and professional service.", 5)
+            ),
+            keahlian = listOf(
+                "Plumbing",
+                "Pipe Repair",
+                "Water Installation"
+            ),
+            picture = R.drawable.cleaner1,
+            experience = 5
+        ),
+        Worker(
+            name = "Siti Rahma",
+            payPerHour = 45000,
+            description = "Professional house cleaner who specializes in deep cleaning and organizing.",
+            rating = 4.7,
+            reviews = listOf(
+                Review("Diana", "My house looks spotless!", 5),
+                Review("Rina", "Very thorough and punctual.", 3)
+            ),
+            keahlian = listOf(
+                "House Cleaning",
+                "Deep Cleaning",
+                "Home Organization"
+            ),
+            picture = R.drawable.cleaner1,
+            experience = 3
+        ),
+        Worker(
+            name = "Budi Santoso",
+            payPerHour = 60000,
+            description = "Skilled electrician experienced in home wiring and electrical repairs.",
+            rating = 4.9,
+            reviews = listOf(
+                Review("Andi", "Solved my electrical problem perfectly.", 5),
+                Review("Maya", "Quick, safe, and reliable.", 4)
+            ),
+            keahlian = listOf(
+                "Electrical Repair",
+                "Home Wiring",
+                "Lighting Installation"
+            ),
+            picture = R.drawable.cleaner1,
+            experience = 8
         )
     )
 }
