@@ -53,6 +53,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import org.umn.servisin.ReusableComponents.RatingStars
 import org.umn.servisin.datas.ServisDataSource
 import org.umn.servisin.model.Worker
 import org.umn.servisin.navigation.Screen
@@ -314,35 +315,13 @@ fun WorkerProfile(navController: NavController, worker: Worker) {
 
                         RatingStars(
                             rating = worker.rating,
+                            Color.White
                         )
                     }
                 }
 
 
             }
-        }
-    }
-}
-
-//to make the stars in ratings
-@Composable
-fun RatingStars(
-    rating: Double,
-) {
-    Row() {
-        for (i in 1..5) {
-            val icon = when {
-                rating >= i -> Icons.Filled.Star
-                rating >= i - 0.5 -> Icons.Filled.StarHalf
-                else -> Icons.Outlined.StarOutline
-            }
-
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                tint = Color.White,
-                modifier = Modifier.size(20.dp)
-            )
         }
     }
 }
