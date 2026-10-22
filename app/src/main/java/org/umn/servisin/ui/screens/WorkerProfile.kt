@@ -2,6 +2,7 @@ package org.umn.servisin.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -63,7 +65,6 @@ import java.util.Locale
 
 @Composable
 fun WorkerProfile(navController: NavController, worker: Worker) {
-    val WorkerProfile = ServisDataSource.workers
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -173,7 +174,7 @@ fun WorkerProfile(navController: NavController, worker: Worker) {
                                     )
                                 }
 
-                                Spacer(modifier = Modifier.width(8.dp))
+                                Spacer(modifier = Modifier.width(16.dp))
 
                                 IconButton(
                                     onClick = { },
@@ -226,6 +227,8 @@ fun WorkerProfile(navController: NavController, worker: Worker) {
                             "Deskripsi: ${worker.description}"
                         )
 
+                        Spacer(modifier = Modifier.padding(12.dp))
+
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween,
@@ -246,9 +249,11 @@ fun WorkerProfile(navController: NavController, worker: Worker) {
                             )
                         }
 
+                        Spacer(modifier = Modifier.padding(12.dp))
+
                         Button(
                             onClick = {
-
+                                navController.navigate(Screen.BookingPlan.route)
                             },
                             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                             shape = RoundedCornerShape(50.dp),
@@ -328,7 +333,9 @@ fun WorkerProfile(navController: NavController, worker: Worker) {
 
 @Composable
 fun WorkerSkills(worker: Worker) {
-    Row {
+    Row(
+        modifier = Modifier.horizontalScroll(rememberScrollState()),
+    ) {
         Text(
             text = "Keahlian: ",
             modifier = Modifier.padding(top = 6.dp)

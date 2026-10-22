@@ -1,6 +1,7 @@
 
 package org.umn.servisin.ui.screens
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -36,12 +37,13 @@ import androidx.navigation.compose.rememberNavController
 import org.umn.servisin.ReusableComponents.RatingStars
 import org.umn.servisin.datas.ServisDataSource
 import org.umn.servisin.model.Worker
+import org.umn.servisin.navigation.Screen
 import org.umn.servisin.ui.theme.mainGradientBrush
 
 private val StarGold = Color(0xFFF2B01E)
 
 @Composable
-fun OurPeopleScreen(navController: NavController) {
+fun WorkerCategory(navController: NavController) {
     val workers = ServisDataSource.workers
 
     Box(
@@ -169,7 +171,9 @@ fun OurPeopleScreen(navController: NavController) {
                     WorkerCard(
                         worker = worker,
                         onBookNowClick = {
-                            // Add booking navigation here
+                            navController.navigate(
+                                "WorkerProfile/${Uri.encode(worker.name)}"
+                            )
                         }
                     )
                 }
@@ -347,8 +351,8 @@ fun WorkerCard(
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun OurPeopleScreenPreview() {
-    OurPeopleScreen(
+fun WorkerCategoryPreview() {
+    WorkerCategory(
         navController = rememberNavController()
     )
 }

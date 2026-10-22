@@ -415,9 +415,7 @@ fun BookingPlan(navController: NavController) {
 
             Button(
                 onClick = {
-                    navController.navigate(Screen.Home.route) {
-                        popUpTo(Screen.Login.route) { inclusive = true }
-                    }
+                    navController.navigate(Screen.Home.route)
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor =

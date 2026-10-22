@@ -89,8 +89,8 @@ fun CategoryScreen(navController: NavController) {
                 items(serviceItems) { item ->
                     ServiceItemCard(
                         item = item,
-                        onViewDetailsClick = { navController.navigate(Screen.OurPeople.route) },
-                        onBookNowClick = { navController.navigate(Screen.OurPeople.route) }
+                        onViewDetailsClick = { navController.navigate(Screen.Worker.route) },
+                        onBookNowClick = { navController.navigate(Screen.Worker.route) }
                     )
                 }
             }

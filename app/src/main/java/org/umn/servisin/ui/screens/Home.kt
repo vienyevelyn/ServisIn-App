@@ -183,7 +183,7 @@ fun HomeScreen(navController: NavController) {
                             .width(220.dp)
                             .height(221.dp)
                             .clip(RoundedCornerShape(20.dp))
-                            .clickable { navController.navigate(Screen.OurPeople.route) },
+                            .clickable { navController.navigate(Screen.Worker.route) },
                         shape = RoundedCornerShape(20.dp),
                         color = Color(0xFFE2E6E3)
                     ) {
