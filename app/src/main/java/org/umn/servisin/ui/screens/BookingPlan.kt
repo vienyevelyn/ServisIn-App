@@ -51,6 +51,12 @@ fun BookingPlan(navController: NavController) {
     var address by remember { mutableStateOf("") }
     var notes by remember { mutableStateOf("") }
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
+
+    var dateError by remember { mutableStateOf(false) }
+    var startTimeError by remember { mutableStateOf(false) }
+    var endTimeError by remember { mutableStateOf(false) }
+    var addressError by remember { mutableStateOf(false) }
+
     val imagePicker = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri ->
@@ -139,7 +145,10 @@ fun BookingPlan(navController: NavController) {
                             .fillMaxWidth()
                             .height(48.dp)
                             .background(
-                                Color.LightGray.copy(alpha = 0.75f),
+                                if (dateError)
+                                    MaterialTheme.colorScheme.errorContainer
+                                else
+                                    Color.LightGray.copy(alpha = 0.75f),
                                 RoundedCornerShape(12.dp)
                             )
                             .clickable {
@@ -156,7 +165,7 @@ fun BookingPlan(navController: NavController) {
                                                 month + 1,
                                                 year
                                             )
-
+                                        dateError = false
                                     },
                                     calendar.get(Calendar.YEAR),
                                     calendar.get(Calendar.MONTH),
@@ -176,6 +185,14 @@ fun BookingPlan(navController: NavController) {
                             style = MaterialTheme.typography.bodySmall.copy(
                                 color = Color.DarkGray.copy(alpha = 0.8f)
                             )
+                        )
+                    }
+                    if (dateError) {
+                        Text(
+                            text = "Please select a date",
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.padding(top = 4.dp)
                         )
                     }
                     // TIME
@@ -203,7 +220,10 @@ fun BookingPlan(navController: NavController) {
                                 .weight(1f)
                                 .height(48.dp)
                                 .background(
-                                    Color.LightGray.copy(alpha = 0.75f),
+                                    if (startTimeError)
+                                        MaterialTheme.colorScheme.errorContainer
+                                    else
+                                        Color.LightGray.copy(alpha = 0.75f),
                                     RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
@@ -219,7 +239,7 @@ fun BookingPlan(navController: NavController) {
                                                     hour,
                                                     minute
                                                 )
-
+                                            startTimeError = false
                                         },
                                         calendar.get(Calendar.HOUR_OF_DAY),
                                         calendar.get(Calendar.MINUTE),
@@ -242,7 +262,6 @@ fun BookingPlan(navController: NavController) {
                             )
                         }
 
-
                         // END TIME
 
                         Box(
@@ -250,7 +269,10 @@ fun BookingPlan(navController: NavController) {
                                 .weight(1f)
                                 .height(48.dp)
                                 .background(
-                                    Color.LightGray.copy(alpha = 0.75f),
+                                    if (endTimeError)
+                                        MaterialTheme.colorScheme.errorContainer
+                                    else
+                                        Color.LightGray.copy(alpha = 0.75f),
                                     RoundedCornerShape(12.dp)
                                 )
                                 .clickable {
@@ -266,7 +288,7 @@ fun BookingPlan(navController: NavController) {
                                                     hour,
                                                     minute
                                                 )
-
+                                            endTimeError = false
                                         },
                                         calendar.get(Calendar.HOUR_OF_DAY),
                                         calendar.get(Calendar.MINUTE),
@@ -289,6 +311,22 @@ fun BookingPlan(navController: NavController) {
                             )
                         }
                     }
+                    if (startTimeError || endTimeError) {
+                        Text(
+                            text = when {
+                                startTimeError && endTimeError ->
+                                    "Please select start and end time"
+
+                                startTimeError ->
+                                    "Please select a start time"
+
+                                else ->
+                                    "Please select an end time"
+                            },
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
 
                     // ADDRESS
 
@@ -307,6 +345,7 @@ fun BookingPlan(navController: NavController) {
                         value = address,
                         onValueChange = {
                             address = it
+                            addressError = false
                         },
                         placeholder = {
                             Text(
@@ -315,11 +354,19 @@ fun BookingPlan(navController: NavController) {
                             )
                         },
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .height(48.dp),
+                            .fillMaxWidth(),
                         shape = RoundedCornerShape(12.dp),
                         singleLine = true,
                         textStyle = MaterialTheme.typography.bodySmall,
+                        isError = addressError,
+                        supportingText = {
+                            if (addressError) {
+                                Text(
+                                    "Address cannot be empty",
+                                    color = MaterialTheme.colorScheme.error
+                                )
+                            }
+                        },
                         colors = OutlinedTextFieldDefaults.colors(
                             unfocusedContainerColor = Color.LightGray.copy(alpha = 0.75f),
                             focusedContainerColor = Color.LightGray.copy(alpha = 0.75f)
@@ -415,7 +462,21 @@ fun BookingPlan(navController: NavController) {
 
             Button(
                 onClick = {
-                    navController.navigate(Screen.Home.route)
+                    dateError = selectedDate.isEmpty()
+                    startTimeError = startTime.isEmpty()
+                    endTimeError = endTime.isEmpty()
+                    addressError = address.isBlank()
+
+                    val hasError = dateError ||
+                                startTimeError ||
+                                endTimeError ||
+                                addressError
+                    if (!hasError) {
+                        if (notes.isBlank()) {
+                            notes = "Nothing"
+                        }
+                        navController.navigate(Screen.Home.route)
+                    }
                 },
                 colors = ButtonDefaults.buttonColors(
                     containerColor =
