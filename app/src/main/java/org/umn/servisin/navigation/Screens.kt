@@ -14,4 +14,6 @@ sealed class Screen(val route: String) {
 
     object Home : Screen("home")
 
+    object OurPeople : Screen("our_people")
+
 }

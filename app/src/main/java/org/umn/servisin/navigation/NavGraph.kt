@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import org.umn.servisin.ui.screens.CategoryScreen
 import org.umn.servisin.ui.screens.HomeScreen
 import org.umn.servisin.ui.screens.Login
+import org.umn.servisin.ui.screens.OurPeopleScreen
 import org.umn.servisin.ui.screens.SignUp
 import org.umn.servisin.ui.screens.SplashScreen1
 import org.umn.servisin.ui.screens.SplashScreen2
@@ -47,6 +48,10 @@ fun SetupNavGraph() {
 
         composable(route = Screen.Home.route) {
             HomeScreen(navController = navController)
+        }
+
+        composable(route = Screen.OurPeople.route) {
+            OurPeopleScreen(navController = navController)
         }
 
     }

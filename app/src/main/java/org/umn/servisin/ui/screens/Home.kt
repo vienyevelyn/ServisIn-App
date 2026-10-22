@@ -2,6 +2,7 @@ package org.umn.servisin.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -180,7 +181,9 @@ fun HomeScreen(navController: NavController) {
                     Surface(
                         modifier = Modifier
                             .width(220.dp)
-                            .height(221.dp),
+                            .height(221.dp)
+                            .clip(RoundedCornerShape(20.dp))
+                            .clickable { navController.navigate(Screen.OurPeople.route) },
                         shape = RoundedCornerShape(20.dp),
                         color = Color(0xFFE2E6E3)
                     ) {

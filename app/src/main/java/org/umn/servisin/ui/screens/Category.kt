@@ -2,6 +2,7 @@ package org.umn.servisin.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import org.umn.servisin.datas.ServisDataSource
 import org.umn.servisin.model.ServisCategory
+import org.umn.servisin.navigation.Screen
 import org.umn.servisin.ui.theme.mainGradientBrush
 
 @Composable
@@ -87,8 +89,8 @@ fun CategoryScreen(navController: NavController) {
                 items(serviceItems) { item ->
                     ServiceItemCard(
                         item = item,
-                        onViewDetailsClick = { },
-                        onBookNowClick = {  }
+                        onViewDetailsClick = { navController.navigate(Screen.OurPeople.route) },
+                        onBookNowClick = { navController.navigate(Screen.OurPeople.route) }
                     )
                 }
             }
@@ -101,7 +103,10 @@ fun ServiceItemCard(
     onBookNowClick: () -> Unit
 ) {
     Surface(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(20.dp))
+            .clickable { onViewDetailsClick() },
         shape = RoundedCornerShape(20.dp),
         color = Color.White,
         shadowElevation = 2.dp

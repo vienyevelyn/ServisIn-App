@@ -2,6 +2,7 @@ package org.umn.servisin.datas
 
 import org.umn.servisin.R
 import org.umn.servisin.model.CategoryItem
+import org.umn.servisin.model.Person
 import org.umn.servisin.model.ServisCategory
 
 object ServisDataSource {
@@ -55,6 +56,33 @@ object ServisDataSource {
             title = "Cleaning & Pest Control",
             description = "Deep Cleaning Rumah, Cuci Kasur/Sofa/Karpet, Pembasmi Rayap/Serangga, dan Disinfeksi.",
             categoryRoute = "cleaning_route"
+        )
+    )
+
+    val peopleList = listOf(
+        Person(
+            imageRes = null,
+            name = "Siti Rohani",
+            rating = 4.9,
+            reviewCount = 120,
+            services = listOf("Membersihkan karat", "Kaca", "Lantai", "Area toilet", "Disinfeksi", "Detailing dapur"),
+            distance = "1.2 km away"
+        ),
+        Person(
+            imageRes = null,
+            name = "Budi Santoso",
+            rating = 4.5,
+            reviewCount = 120,
+            services = listOf("Membersihkan karat", "Kaca", "Lantai", "Area toilet", "Disinfeksi", "Detailing dapur"),
+            distance = "1.2 km away"
+        ),
+        Person(
+            imageRes = null,
+            name = "Dewi Lestari",
+            rating = 4.5,
+            reviewCount = 120,
+            services = listOf("Membersihkan karat", "Kaca", "Lantai", "Area toilet", "Disinfeksi", "Detailing dapur"),
+            distance = "1.2 km away"
         )
     )
 }
